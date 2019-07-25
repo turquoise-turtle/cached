@@ -1,0 +1,3 @@
+/*partly from https://webapps.stackexchange.com/questions/65758/how-do-i-skip-404s-in-the-wayback-machine*/
+/*the 'javascript:' thing turns it into a bookmarklet, remove for actual use */
+javascript:var f = function(jsn){if (jsn.archived_snapshots.closest) {window.location.href=jsn.archived_snapshots.closest.url.replace('http://web', 'https://web');} else { window.location.href='http://webcache.googleusercontent.com/search?q=cache:' + window.location.href; /*alert('unfortunately there\'s no cached copy')*/}};var d = document,z=d.createElement('script'),b=d.body,l=d.location;z.setAttribute('src','https://archive.org/wayback/available?url='+encodeURIComponent(l.href)+'&callback=f');z.setAttribute('type', "application/javascript");b.appendChild(z);void(0);
