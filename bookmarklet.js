@@ -28,12 +28,14 @@ xhttp.onreadystatechange = function() {
 		var jsn = xhttp.response;
 		if (jsn.archived_snapshots.closest) {
 			window.location.href=jsn.archived_snapshots.closest.url.replace('http://web', 'https://web');
+		} else {
+			window.location.href='http://webcache.googleusercontent.com/search?q=cache:' + window.location.href; 
 		}
 	} else {
 		window.location.href='http://webcache.googleusercontent.com/search?q=cache:' + window.location.href; 
 	}
 };
-xhttp.open("GET", 'https://archive.org/wayback/available?url='+encodeURIComponent(window.location.href), true);
+xhttp.open("GET", 'https://new-tab-cors-server.herokuapp.com/https://archive.org/wayback/available?url=' + encodeURIComponent(window.location.href), true);
 xhttp.send();
 
 //v2
